@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Charles Lynch</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"
+      charset="utf-8"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <section class="page" id="home-page">
+    
+        <div class="home" id="home-center">
+          <div>
+            <div class="waviy">
+              <span style="--i: 1">C</span>
+              <span style="--i: 2">h</span>
+              <span style="--i: 3">a</span>
+              <span style="--i: 4">r</span>
+              <span style="--i: 5">l</span>
+              <span style="--i: 6">e</span>
+              <span style="--i: 7">s</span>
+              <span style="--i: 8">&nbsp;</span>
+              <span style="--i: 9">L</span>
+              <span style="--i: 10">y</span>
+              <span style="--i: 11">n</span>
+              <span style="--i: 12">c</span>
+              <span style="--i: 13">h</span>
+            </div>
+            <h2 class="tagline">Full-stack Developer CV</h2>
+            <a href="/#contact" class="contact-button">Contact</a>
+          </div>
+          <div id="left-nav">
+            <a href="/#" onclick="slideNav('home')">
+              <div class="CL">CL</div>
+            </a>
+            <nav class="menu">
+              <a href="/#about" onclick="slideNav('about')"><div>About</div>
+              </a>
+              <a href="/#skills" onclick="slideNav('skills')"
+                ><div>Skills</div></a
+              >
+              <a href="/#experience" onclick="slideNav('experience')"
+                ><div>Experience</div></a
+              >
+              <a href="/#education" onclick="slideNav('education')"
+                ><div>Education</div></a
+              >
+              <a href="/#contact" class="contact" onclick="slideNav('contact')"
+                ><div>Contact</div></a
+              >
+            </nav>
+            <div></div>
+          </div>
+        </div>
+        
+      </section>
+      <section class="page non-home" id="about-page">
+       
+      </section>
+      <section class="page non-home" id="skills-page">
+        <div class="radarChart"></div>
+      </section>
+      <section
+        class="page non-home"
+        id="experience-page"
+        onclick="slideNav"
+      ></section>
+      <section
+        class="page non-home"
+        id="education-page"
+        onclick="slideNav"
+      ></section>
+      <section class="page non-home" id="contact"></section>
+
+      <a href="./files/test.pdf" download>
+        <div class="pdf-download">
+          Boring PDF Version<img
+            class="download-icon"
+            src="./images/download.svg"
+          />
+        </div>
+      </a>
+    </main>
+  </body>
+  <script>
+    function slideNav(pageString) {
+      let nav = document.getElementById("left-nav")
+      navRect = nav.getBoundingClientRect();
+      let navFromRight = window.innerWidth - navRect.left
+      let home = document.getElementById("home-page");
+      let homeCenter = document.getElementById("home-center");
+      let page = document.getElementById(pageString + "-page");
+      if (pageString === "skills") {
+        const event = new Event('animateGraph');
+        document.dispatchEvent(event)
+      }
+      page.classList.add("active");
+      if (!home.classList.contains("tucked")) {
+        home.classList.add("tucked");
+        home.style.left = "-100vw";
+        homeCenter.style.left = navFromRight + "px"
+      }
+      if (pageString === "home") {
+        home.classList.remove("tucked");
+        home.style.left = "0px";
+        nav.style.left = "0px"
+      }
+    }
+  </script>
+  <script src="./radarChart.js"></script>
+  <script>
+    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+
+    //////////////////////////////////////////////////////////////
+    //////////////////////// Set-Up //////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    var margin = { top: 100, right: 100, bottom: 100, left: 100 },
+      width =
+        Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
+      height = Math.min(
+        width,
+        window.innerHeight - margin.top - margin.bottom - 20
+      );
+
+    //////////////////////////////////////////////////////////////
+    ////////////////////////// Data //////////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    var data = [
+      [
+        //iPhone
+        { axis: "HTML", value: 8 },
+        { axis: "JavaScript", value: 9 },
+        { axis: "TypeScript", value: 8 },
+        { axis: "React", value: 8 },
+        { axis: "Git", value: 7 },
+        { axis: "Python", value: 6 },
+        { axis: "Node", value: 5 },
+        { axis: "AWS", value: 5 },
+        { axis: "Linux", value: 4 },
+        { axis: "RDBMS", value: 6 },
+        { axis: "NoSQL", value: 4 },
+        { axis: "Atlassian suite", value: 7 },
+        { axis: "PHP", value: 4 },
+        { axis: "Vue", value: 4 },
+        { axis: "SASS", value: 7 },
+        { axis: "CSS", value: 8 },
+      ],
+    ];
+    //////////////////////////////////////////////////////////////
+    //////////////////// Draw the Chart //////////////////////////
+    //////////////////////////////////////////////////////////////
+
+    var color = d3.scale.ordinal().range(["#151719", "#CC333F", "#00A0B0"]);
+
+    var radarChartOptions = {
+      w: width,
+        h: height,
+      margin: margin,
+      maxValue: 0.5,
+      levels: 5,
+      roundStrokes: true,
+      color: color,
+      animate: true
+    };
+    //Call function to draw the Radar chart
+    RadarChart(".radarChart", data, radarChartOptions);
+  </script>
+</html>
