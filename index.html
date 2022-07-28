@@ -1,173 +1,388 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Charles Lynch</title>
-    <link rel="stylesheet" href="stylesheets/style.css" />
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"
-      charset="utf-8"
-    ></script>
-  </head>
-  <body>
-    <main>
-      <section class="page" id="home-page">
-    
-        <div class="home" id="home-center">
-          <div>
-            <div class="waviy">
-              <span style="--i: 1">C</span>
-              <span style="--i: 2">h</span>
-              <span style="--i: 3">a</span>
-              <span style="--i: 4">r</span>
-              <span style="--i: 5">l</span>
-              <span style="--i: 6">e</span>
-              <span style="--i: 7">s</span>
-              <span style="--i: 8">&nbsp;</span>
-              <span style="--i: 9">L</span>
-              <span style="--i: 10">y</span>
-              <span style="--i: 11">n</span>
-              <span style="--i: 12">c</span>
-              <span style="--i: 13">h</span>
+<html lang="en">
+    <head>
+        <title>Charlie Lynch</title>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css" />
+        <script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Roboto&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            @font-face {
+                font-family: "Coolvetica";
+                src: url("../fonts/CoolveticaV2.otf");
+                src: url("../fonts/CoolveticaV2.woff2") format("woff2");
+                src: url("../fonts/CoolveticaV2.woff") format("woff");
+            }
+            body {
+                margin: 0;
+                /* background-color: #FDEEBE; */
+            }
+            * {
+                box-sizing: border-box;
+            }
+
+            h1 {
+                font-size: 2rem;
+                text-align: center;
+                margin: 0;
+                position: relative;
+                bottom: 9px;
+            }
+            h2 {
+                margin: 0px;
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0px;
+                margin: 0px;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: inherit;
+            }
+            body {
+                font-family: "Helvetica Neue", sans-serif;
+            }
+
+            .html-tag {
+                font-family: "Homemade Apple", cursive;
+                color: #e37b4c;
+                opacity: 0.9;
+            }
+
+            .html-tag.level-1 {
+                /* color: #97cbf4; */
+                margin-bottom: -2px;
+            }
+            .html-tag.level-2 {
+                /* color: #cfbdee; */
+                margin-bottom: -2px;
+                margin-left: 1.5rem;
+            }
+            .html-tag.level-3 {
+                /* color: #f794c0; */
+                margin-top: -3px;
+                margin-bottom: -3px;
+                margin-left: 5rem;
+            }
+
+            .section-container {
+                max-width: 800px;
+                margin: 0 auto;
+                position: relative;
+                right: 4rem;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-family: Coolvetica;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                position: fixed;
+                z-index: 2;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+                background-color: rgba(255, 255, 255, 0.9);
+                box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25), 0 3px 7px -3px rgba(0, 0, 0, 0.3);
+            }
+            nav a {
+                padding: 1rem 0.5rem;
+            }
+            nav a:hover {
+                border-bottom: 4px solid #97cbf4;
+                padding-bottom: calc(1rem - 4px);
+            }
+            nav a:hover:nth-of-type(1) {
+                border-color: #6a3791;
+            }
+            nav a:hover:nth-of-type(2) {
+                border-color: #0a7362;
+            }
+            nav a:hover:nth-of-type(3) {
+                border-color: #115b98;
+            }
+            nav a:hover:nth-of-type(4) {
+                border-color: #b5562b;
+            }
+            nav a:hover:nth-of-type(5) {
+                border-color: #9c2246;
+            }
+            h1,
+            h2,
+            p,
+            li,
+            code {
+                margin-left: 8rem;
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            @media all and (min-width: 50em) {
+            }
+            li * {
+                margin-left: 0;
+            }
+            .job-title {
+                margin-bottom: 1rem;
+                margin-top: 2rem;
+                font-weight: 600;
+            }
+            li:first-of-type .job-title {
+                margin-top: 0;
+            }
+            #education > div > ul > li:not(:first-child),
+            #contact > div > ul > li:not(:first-child) {
+                margin-top: 2rem;
+            }
+            #education > div > ul > li > span {
+                font-weight: bold;
+            }
+            .heading {
+                border-left: 20px solid #e37b4c;
+                border-right: 20px solid #e37b4c;
+            }
+            .heading .section-container {
+                padding-top: 3.5rem;
+            }
+            section {
+                padding-top: 5px;
+                border-top: 1px dashed black;
+                border-left: 20px solid black;
+                border-right: 20px solid black;
+            }
+            section:nth-of-type(1) {
+                border-color: #6a3791;
+            }
+
+            section:nth-of-type(2) {
+                border-color: #0a7362;
+            }
+            section:nth-of-type(3) {
+                border-color: #115b98;
+            }
+            section:nth-of-type(4) {
+                border-color: #b5562b;
+            }
+            section:nth-of-type(5) {
+                border-color: #9c2246;
+            }
+            section:nth-of-type(1) .html-tag {
+                color: #6a3791;
+            }
+
+            section:nth-of-type(2) .html-tag {
+                color: #0a7362;
+            }
+            section:nth-of-type(3) .html-tag {
+                color: #115b98;
+            }
+            section:nth-of-type(4) .html-tag {
+                color: #b5562b;
+            }
+            section:nth-of-type(5) .html-tag {
+                color: #9c2246;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <a
+                href="#"
+                onclick="document.querySelector('#summary').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
+                >Summary</a
+            >
+            <a
+                href="#"
+                onclick="document.querySelector('#skills').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
+                >Skills</a
+            >
+            <a
+                href="#"
+                onclick="document.querySelector('#experience').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
+                >Experience</a
+            >
+            <a
+                href="#"
+                onclick="document.querySelector('#education').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
+                >Education</a
+            >
+            <a
+                href="#"
+                onclick="document.querySelector('#contact' ).scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
+                >Contact</a
+            >
+        </nav>
+        <main>
+            <div class="heading">
+                <div class="section-container">
+                    <div class="html-tag level-1">&ltmain&gt</div>
+                    <div class="html-tag level-2">&lth1&gt</div>
+                    <h1>Charlie Lynch</h1>
+                    <div class="html-tag level-2">&lt/h1&gt</div>
+                </div>
             </div>
-            <h2 class="tagline">Full-stack Developer CV</h2>
-            <a href="/#contact" class="contact-button">Contact</a>
-          </div>
-          <div id="left-nav">
-            <a href="/#" onclick="slideNav('home')">
-              <div class="CL">CL</div>
-            </a>
-            <nav class="menu">
-              <a href="/#about" onclick="slideNav('about')"><div>About</div>
-              </a>
-              <a href="/#skills" onclick="slideNav('skills')"
-                ><div>Skills</div></a
-              >
-              <a href="/#experience" onclick="slideNav('experience')"
-                ><div>Experience</div></a
-              >
-              <a href="/#education" onclick="slideNav('education')"
-                ><div>Education</div></a
-              >
-              <a href="/#contact" class="contact" onclick="slideNav('contact')"
-                ><div>Contact</div></a
-              >
-            </nav>
-            <div></div>
-          </div>
-        </div>
-        
-      </section>
-      <section class="page non-home" id="about-page">
-       
-      </section>
-      <section class="page non-home" id="skills-page">
-        <div class="radarChart"></div>
-      </section>
-      <section
-        class="page non-home"
-        id="experience-page"
-        onclick="slideNav"
-      ></section>
-      <section
-        class="page non-home"
-        id="education-page"
-        onclick="slideNav"
-      ></section>
-      <section class="page non-home" id="contact"></section>
 
-      <a href="./files/test.pdf" download>
-        <div class="pdf-download">
-          Boring PDF Version<img
-            class="download-icon"
-            src="./images/download.svg"
-          />
-        </div>
-      </a>
-    </main>
-  </body>
-  <script>
-    function slideNav(pageString) {
-      let nav = document.getElementById("left-nav")
-      navRect = nav.getBoundingClientRect();
-      let navFromRight = window.innerWidth - navRect.left
-      let home = document.getElementById("home-page");
-      let homeCenter = document.getElementById("home-center");
-      let page = document.getElementById(pageString + "-page");
-      if (pageString === "skills") {
-        const event = new Event('animateGraph');
-        document.dispatchEvent(event)
-      }
-      page.classList.add("active");
-      if (!home.classList.contains("tucked")) {
-        home.classList.add("tucked");
-        home.style.left = "-100vw";
-        homeCenter.style.left = navFromRight + "px"
-      }
-      if (pageString === "home") {
-        home.classList.remove("tucked");
-        home.style.left = "0px";
-        nav.style.left = "0px"
-      }
-    }
-  </script>
-  <script src="./radarChart.js"></script>
-  <script>
-    /* Radar chart design created by Nadieh Bremer - VisualCinnamon.com */
+            <section id="summary">
+                <div class="section-container">
+                    <div class="html-tag level-2">&ltsection&gt</div>
 
-    //////////////////////////////////////////////////////////////
-    //////////////////////// Set-Up //////////////////////////////
-    //////////////////////////////////////////////////////////////
+                    <div class="html-tag level-3">&lth2&gt</div>
+                    <h2>Summary</h2>
+                    <div class="html-tag level-3">&lt/h2&gt</div>
+                    <div class="html-tag level-3">&ltp&gt</div>
+                    <p>
+                        I am a software developer focused on full-stack web applications. I enjoy delivering excellent
+                        products and services on both web and mobile. I am a self-starter, I enjoy being part of a
+                        collaborative team, and talking to stakeholders. I am a quick learner and have strong
+                        problem-solving skills. I have experience in quite a wide variety of projects and I am sure I
+                        can quickly start adding value to the industry, as I am keen to secure a position after taking
+                        some time out to travel and undertake a part-time degree program to make me more rounded and
+                        focused.
+                    </p>
+                    <div class="html-tag level-3">&ltp&gt</div>
+                    <div class="html-tag level-2">&lt/section&gt</div>
+                </div>
+            </section>
+            <section id="skills">
+                <div class="section-container">
+                    <div class="html-tag level-2">&ltsection&gt</div>
+                    <div class="html-tag level-3">&lth2&gt</div>
+                    <h2>Skills</h2>
+                    <div class="html-tag level-3">&lt/h2&gt</div>
+                    <div class="html-tag level-3">&ltcode&gt</div>
 
-    var margin = { top: 100, right: 100, bottom: 100, left: 100 },
-      width =
-        Math.min(700, window.innerWidth - 10) - margin.left - margin.right,
-      height = Math.min(
-        width,
-        window.innerHeight - margin.top - margin.bottom - 20
-      );
+                    <pre>
+                        <code>
+                        // This list is not exhaustative but gives an outline of what I have experience with.
+                        let relativeSkills = { 
+                            "HTML": 8, 
+                            "CSS": 8, 
+                            "SASS": 8, 
+                            "Javascript": 9, 
+                            "React": 8, 
+                            "Vue": 5,
+                            "Node": 8, 
+                            "PHP": 5, 
+                            "Python": 6, 
+                            "TypeScript": 7, 
+                            "MongoDB": 3, 
+                            "SQL": 7, 
+                            "AWS": 5, 
+                            "Git": 7 
+                        }
+                    </code>
+                    </pre>
+                    <div class="html-tag level-3">&lt/code&gt</div>
 
-    //////////////////////////////////////////////////////////////
-    ////////////////////////// Data //////////////////////////////
-    //////////////////////////////////////////////////////////////
+                    <div class="html-tag level-2">&lt/section&gt</div>
+                </div>
+            </section>
+            <section id="experience">
+                <div class="section-container">
+                    <div class="html-tag level-2">&ltsection&gt</div>
+                    <div class="html-tag level-3">&lth2&gt</div>
+                    <h2>Experience</h2>
+                    <div class="html-tag level-3">&lt/h2&gt</div>
+                    <div class="html-tag level-3">&ltul&gt</div>
+                    <ul>
+                        <li>
+                            <div class="job-title">Morta (04-2020 - 11-2020) - Full-Stack Developer</div>
+                            <div>
+                                <p>
+                                    I worked as the first employee at this startup, a company that provides a web
+                                    application for managing the intricacies of large civil-engineering projects and the
+                                    many contractors involved. I was working with React, TypeScript, and Django on
+                                    Python, day to day.
+                                </p>    
+                            </div>
+                        </li>
+                        <li>
+                            <div class="job-title">Green Custard (11-2018 - 11-2019) - Full-Stack Developer</div>
+                            <div>
+                                <p>
+                                    Green Custard is a consultancy that creates mvp style web applications. I worked on
+                                    apps for HSBC, JLL, Joint Analytics, and Verizon. My time here involved a lot of
+                                    Typescript, React, and Vue. The company was an extremely close partner with AWS so
+                                    we made use of a lot of its services, such as Lambda, S3, and Congnito.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="job-title">The Lettings Hub (11-2016 - 04-2018) - Software Developer</div>
+                            <div>
+                                <p>
+                                    At The Lettings Hub I worked on an insurance platform that managed Landlords
+                                    property insurance and this was integrated into the onsite call centre. This was a
+                                    LAMP stack.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="html-tag level-3">&lt/ul&gt</div>
+                    <div class="html-tag level-2">&lt/section&gt</div>
+                </div>
+            </section>
+            <section id="education">
+                <div class="section-container">
+                    <div class="html-tag level-2">&ltsection&gt</div>
+                    <div class="html-tag level-3">&lth2&gt</div>
+                    <h2>Education</h2>
+                    <div class="html-tag level-3">&lt/h2&gt</div>
+                    <div class="html-tag level-3">&ltul&gt</div>
+                    <ul>
+                        <li>
+                            <span>University of Keele - Computer Science and Artificial Intelligence MSc</span><br />
+                            (Jan 2021 - Present, part-time, online)
+                        </li>
+                        <li>
+                            <span>University of Bath - Natural Sciences MSc</span><br />
+                            (2014 - 2016) Uncompleted
+                        </li>
+                        <li>
+                            <span>A Levels - A*A*A/A</span><br />
+                            (achieved 2014)
+                        </li>
+                        <li>
+                            <span>Certifications:</span>
+                            <ul>
+                                <li><span>AWS Solutions Architect - Associate</span> 2019</li>
+                                <li><span>UIpath practitioner</span> - 2018</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="html-tag level-3">&lt/ul&gt</div>
+                    <div class="html-tag level-2">&lt/section&gt</div>
+                </div>
+            </section>
+            <section id="contact">
+                <div class="section-container">
+                    <div class="html-tag level-2">&ltsection&gt</div>
+                    <div class="html-tag level-3">&lth2&gt</div>
+                    <h2>Contact</h2>
+                    <div class="html-tag level-3">&lt/h2&gt</div>
+                    <div class="html-tag level-3">&ltul&gt</div>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="https://www.linkedin.com/in/charlie-lynch/">Linkedin</a>
+                        </li>
+                        <li><span>Email:</span> <a href="mailto: cl@charlielynch.co.uk">cl@charlielynch.co.uk</a></li>
+                        <li><span> Mobile:</span> 07739525546</li>
+                    </ul>
 
-    var data = [
-      [
-        //iPhone
-        { axis: "HTML", value: 8 },
-        { axis: "JavaScript", value: 9 },
-        { axis: "TypeScript", value: 8 },
-        { axis: "React", value: 8 },
-        { axis: "Git", value: 7 },
-        { axis: "Python", value: 6 },
-        { axis: "Node", value: 5 },
-        { axis: "AWS", value: 5 },
-        { axis: "Linux", value: 4 },
-        { axis: "RDBMS", value: 6 },
-        { axis: "NoSQL", value: 4 },
-        { axis: "Atlassian suite", value: 7 },
-        { axis: "PHP", value: 4 },
-        { axis: "Vue", value: 4 },
-        { axis: "SASS", value: 7 },
-        { axis: "CSS", value: 8 },
-      ],
-    ];
-    //////////////////////////////////////////////////////////////
-    //////////////////// Draw the Chart //////////////////////////
-    //////////////////////////////////////////////////////////////
-
-    var color = d3.scale.ordinal().range(["#151719", "#CC333F", "#00A0B0"]);
-
-    var radarChartOptions = {
-      w: width,
-        h: height,
-      margin: margin,
-      maxValue: 0.5,
-      levels: 5,
-      roundStrokes: true,
-      color: color,
-      animate: true
-    };
-    //Call function to draw the Radar chart
-    RadarChart(".radarChart", data, radarChartOptions);
-  </script>
+                    <div class="html-tag level-3">&lt/ul&gt</div>
+                    <div class="html-tag level-2">&lt/section&gt</div>
+                    <div class="html-tag level-1">&lt/main&gt</div>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>
