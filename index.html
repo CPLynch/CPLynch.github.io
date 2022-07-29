@@ -84,6 +84,11 @@
                 font-family: Coolvetica;
             }
 
+            main {
+                max-width: 2000px;
+                margin: 0 auto;
+            }
+
             nav a {
                 padding: 1rem 0.5rem;
             }
@@ -243,9 +248,47 @@
             section:nth-of-type(5) .html-tag {
                 color: #9c2246;
             }
+            .cvd-cont {
+                position: fixed;
+                bottom: 0px;
+                left: 0px;
+                width: 100%;
+            }
+            .cvd-cont > div {
+                max-width: 2000px;
+                margin: 0 auto;
+                position: relative;
+            }
+            .cv-download {
+                position: absolute;
+                bottom: 1rem;
+                right: 2.5rem;
+                background-color: rgba(255, 255, 255, 0.9);
+                padding: 0.5rem 0.7rem;
+                border: 5px solid #6a3791;
+                border-color: #6a3791;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 100;
+                color: black;
+                transition: all 400ms ease-in-out;
+            }
+            .cv-download img {
+                height: 1rem;
+            }
         </style>
     </head>
     <body>
+        <div class="cvd-cont">
+            <div>
+                <a href="./Charlie-Lynch-CV-July-2022.pdf" download>
+                    <div id="cvd" class="cv-download">PDF <img src="./images/download.svg" /></div>
+                </a>
+            </div>
+        </div>
+
         <nav>
             <a
                 href="#"
@@ -311,47 +354,8 @@
                     <h2>Relative Skills</h2>
                     <div class="html-tag level-3">&lt;/h2&gt;</div>
                     <div class="html-tag level-3">&lt;div&gt;</div>
-                    <style>
-                        .skills {
-                            display: grid;
-                            grid-template: repeat(18, 1fr) / repeat(32, 1fr);
-                            gap: 1px;
-                            max-width: 600px;
-                            width: 80vw;
-                            height: calc(80vw / 16 * 9);
-                        }
-                        .skills > div {
-                            background-color: red;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                        }
-                        .skills--html {
-                            grid-area: 1 / 1 / 5 / 9;
-                        }
-                        .skills--css {
-                            grid-area: 5 / 1 / 13 / 8;
-                        }
-                        .skills--js {
-                            grid-area: 5 / 8 / 13 / 17;
-                        }
-                        .skills--sass {
-                            grid-area: 13 / 1 / 19 / 11;
-                        }
-                        .skills--ts {
-                            grid-area: 1 / 9 / 5 / 18;
-                        }
-                        .skills--react {
-                            grid-area: 1 / 18 / 5 / 27;
-                        }
-                        .skills--vue {
-                            grid-area: 1 / 27 / 4 / 33;
-                        }
-                    </style>
                     <div id="chartdiv"></div>
-
                     <div class="html-tag level-3">&lt;/div&gt;</div>
-
                     <div class="html-tag level-2">&lt;/section&gt;</div>
                 </div>
             </section>
@@ -378,10 +382,10 @@
                             <div class="job-title">Green Custard (Nov 2018 - Nov 2019) - Full-Stack Developer</div>
                             <div>
                                 <p>
-                                    Green Custard is a consultancy that creates mvp style web applications. I worked on
-                                    apps for HSBC, JLL, Joint Analytics, and Verizon. My time here involved a lot of
-                                    Typescript, React, and Vue. The company was an extremely close partner with AWS, so
-                                    we made use of a lot of its services, such as Lambda, S3, Cognito, etc.
+                                    Green Custard is a consultancy that creates bespoke mvp style web applications. I
+                                    worked on apps for HSBC, JLL, Joint Analytics, and Verizon. My time here involved a
+                                    lot of Typescript, React, and Vue. The company was an extremely close partner with
+                                    AWS, so we made use of a lot of its services, such as Lambda, S3, Cognito, etc.
                                 </p>
                             </div>
                         </li>
@@ -575,6 +579,38 @@
             series.data.setAll([data]);
             series.set("selectedDataItem", series.dataItems[0]);
             series.appear(1000, 100);
+
+            function throttle(func) {
+                let inProgress = false;
+                return function () {
+                    if (inProgress) {
+                        return;
+                    }
+                    inProgress = true;
+                    setTimeout(() => {
+                        func();
+                        inProgress = false;
+                    }, 100);
+                };
+            }
+
+            let scrollHandler = throttle(function (e) {
+                console.log("fir");
+                color = ["#6a3791", "#0a7362", "#115b98", "#b5562b", "#9c2246"];
+                let index = 0;
+                document.querySelectorAll("section").forEach(function (elem, i) {
+                    let top = elem.getBoundingClientRect().top;
+                    let bot = elem.getBoundingClientRect().bottom;
+                    if (window.innerHeight / 2 > top && window.innerHeight / 2 < bot) {
+                        index = i;
+                    }
+                });
+
+                document.getElementById("cvd").style.borderColor = color[index];
+            });
+
+            document.addEventListener("scroll", scrollHandler);
+            window.addEventListener("load", scrollHandler);
         </script>
     </body>
 </html>
