@@ -7,7 +7,7 @@
             content="Charlie Lynch is a Full-stack Web developer based out of Cambridge UK. Specialised in Javascript, Typescript, and associated frameworks."
         />
         <title>Charlie Lynch</title>
-        <script defer src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -58,30 +58,24 @@
             .html-tag {
                 font-family: "Homemade Apple", cursive;
                 color: #e37b4c;
-                opacity: 0.9;
+                opacity: 0.7;
             }
 
             .html-tag.level-1 {
                 /* color: #97cbf4; */
                 margin-bottom: -2px;
+                margin-left: 2rem;
             }
             .html-tag.level-2 {
                 /* color: #cfbdee; */
                 margin-bottom: -2px;
-                margin-left: 1.5rem;
+                margin-left: 2rem;
             }
             .html-tag.level-3 {
                 /* color: #f794c0; */
                 margin-top: -3px;
                 margin-bottom: -3px;
-                margin-left: 5rem;
-            }
-
-            .section-container {
-                max-width: 800px;
-                margin: 0 auto;
-                position: relative;
-                right: 4rem;
+                margin-left: 2.5rem;
             }
 
             h1,
@@ -89,17 +83,7 @@
             h3 {
                 font-family: Coolvetica;
             }
-            nav {
-                display: flex;
-                justify-content: center;
-                position: fixed;
-                z-index: 2;
-                top: 0px;
-                left: 0px;
-                width: 100%;
-                background-color: rgba(255, 255, 255, 0.9);
-                box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25), 0 3px 7px -3px rgba(0, 0, 0, 0.3);
-            }
+
             nav a {
                 padding: 1rem 0.5rem;
             }
@@ -126,12 +110,77 @@
             h2,
             p,
             li,
-            code {
-                margin-left: 8rem;
+            code,
+            .skills,
+            #chartdiv {
+                margin-left: 4rem;
                 margin-top: 0px;
                 margin-bottom: 0px;
             }
+            .section-container {
+                max-width: 800px;
+                margin: 0 auto;
+                position: relative;
+                right: 2rem;
+            }
+            #chartdiv {
+                width: calc(100% - 4rem);
+                height: 20rem;
+            }
+            nav {
+                display: none;
+            }
             @media all and (min-width: 50em) {
+                h1,
+                h2,
+                p,
+                li,
+                code,
+                .skills,
+                #chartdiv {
+                    margin-left: 8rem;
+                    margin-top: 0px;
+                    margin-bottom: 0px;
+                }
+                .section-container {
+                    max-width: 800px;
+                    margin: 0 auto;
+                    position: relative;
+                    right: 4rem;
+                }
+                #chartdiv {
+                    width: calc(100% - 8rem);
+                    height: 20rem;
+                }
+                .heading .section-container {
+                    padding-top: 3.5rem;
+                }
+                .html-tag.level-1 {
+                    margin-left: 0px;
+                }
+                .html-tag.level-2 {
+                    margin-bottom: -2px;
+                    margin-left: 1.5rem;
+                }
+                .html-tag.level-3 {
+                    margin-top: -3px;
+                    margin-bottom: -3px;
+                    margin-left: 5rem;
+                }
+                .html-tag {
+                    opacity: 0.9;
+                }
+                nav {
+                    display: flex;
+                    justify-content: center;
+                    position: fixed;
+                    z-index: 2;
+                    top: 0px;
+                    left: 0px;
+                    width: 100%;
+                    background-color: rgba(255, 255, 255, 0.9);
+                    box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25), 0 3px 7px -3px rgba(0, 0, 0, 0.3);
+                }
             }
             li * {
                 margin-left: 0;
@@ -155,9 +204,7 @@
                 border-left: 20px solid #e37b4c;
                 border-right: 20px solid #e37b4c;
             }
-            .heading .section-container {
-                padding-top: 3.5rem;
-            }
+
             section {
                 padding-top: 5px;
                 border-top: 1px dashed black;
@@ -261,32 +308,49 @@
                 <div class="section-container">
                     <div class="html-tag level-2">&lt;section&gt;</div>
                     <div class="html-tag level-3">&lt;h2&gt;</div>
-                    <h2>Skills</h2>
+                    <h2>Relative Skills</h2>
                     <div class="html-tag level-3">&lt;/h2&gt;</div>
-                    <div class="html-tag level-3">&lt;code&gt;</div>
-
-                    <pre>
-                        <code>
-                        // This list is not exhaustative but gives an outline of what I have experience with.
-                        let relativeSkills = { 
-                            "HTML": 8, 
-                            "CSS": 8, 
-                            "SASS": 8, 
-                            "Javascript": 9, 
-                            "React": 8, 
-                            "Vue": 5,
-                            "Node": 8, 
-                            "PHP": 5, 
-                            "Python": 6, 
-                            "TypeScript": 7, 
-                            "MongoDB": 3, 
-                            "SQL": 7, 
-                            "AWS": 5, 
-                            "Git": 7 
+                    <div class="html-tag level-3">&lt;div&gt;</div>
+                    <style>
+                        .skills {
+                            display: grid;
+                            grid-template: repeat(18, 1fr) / repeat(32, 1fr);
+                            gap: 1px;
+                            max-width: 600px;
+                            width: 80vw;
+                            height: calc(80vw / 16 * 9);
                         }
-                    </code>
-                    </pre>
-                    <div class="html-tag level-3">&lt;/code&gt;</div>
+                        .skills > div {
+                            background-color: red;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        .skills--html {
+                            grid-area: 1 / 1 / 5 / 9;
+                        }
+                        .skills--css {
+                            grid-area: 5 / 1 / 13 / 8;
+                        }
+                        .skills--js {
+                            grid-area: 5 / 8 / 13 / 17;
+                        }
+                        .skills--sass {
+                            grid-area: 13 / 1 / 19 / 11;
+                        }
+                        .skills--ts {
+                            grid-area: 1 / 9 / 5 / 18;
+                        }
+                        .skills--react {
+                            grid-area: 1 / 18 / 5 / 27;
+                        }
+                        .skills--vue {
+                            grid-area: 1 / 27 / 4 / 33;
+                        }
+                    </style>
+                    <div id="chartdiv"></div>
+
+                    <div class="html-tag level-3">&lt;/div&gt;</div>
 
                     <div class="html-tag level-2">&lt;/section&gt;</div>
                 </div>
@@ -300,7 +364,7 @@
                     <div class="html-tag level-3">&lt;ul&gt;</div>
                     <ul>
                         <li>
-                            <div class="job-title">Morta (04-2020 - 11-2020) - Full-Stack Developer</div>
+                            <div class="job-title">Morta (Apr 2020 - Nov 2020) - Full-Stack Developer</div>
                             <div>
                                 <p>
                                     I worked as the first employee at this startup, a company that provides a web
@@ -311,18 +375,18 @@
                             </div>
                         </li>
                         <li>
-                            <div class="job-title">Green Custard (11-2018 - 11-2019) - Full-Stack Developer</div>
+                            <div class="job-title">Green Custard (Nov 2018 - Nov 2019) - Full-Stack Developer</div>
                             <div>
                                 <p>
                                     Green Custard is a consultancy that creates mvp style web applications. I worked on
                                     apps for HSBC, JLL, Joint Analytics, and Verizon. My time here involved a lot of
-                                    Typescript, React, and Vue. The company was an extremely close partner with AWS so
-                                    we made use of a lot of its services, such as Lambda, S3, and Congnito.
+                                    Typescript, React, and Vue. The company was an extremely close partner with AWS, so
+                                    we made use of a lot of its services, such as Lambda, S3, Cognito, etc.
                                 </p>
                             </div>
                         </li>
                         <li>
-                            <div class="job-title">The Lettings Hub (11-2016 - 04-2018) - Software Developer</div>
+                            <div class="job-title">The Lettings Hub (Nov 2016 - Apr 2018) - Software Developer</div>
                             <div>
                                 <p>
                                     At The Lettings Hub I worked on an insurance platform that managed Landlords
@@ -389,5 +453,128 @@
                 </div>
             </section>
         </main>
+        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
+        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+        <script>
+            let root = am5.Root.new("chartdiv");
+
+            root.setThemes([am5themes_Animated.new(root)]);
+
+            let container = root.container.children.push(
+                am5.Container.new(root, {
+                    width: am5.percent(100),
+                    height: am5.percent(100),
+                    layout: root.verticalLayout,
+                })
+            );
+
+            let series = container.children.push(
+                am5hierarchy.Treemap.new(root, {
+                    singleBranchOnly: false,
+                    downDepth: 1,
+                    upDepth: -1,
+                    initialDepth: 2,
+                    valueField: "value",
+                    categoryField: "name",
+                    childDataField: "children",
+                    nodePaddingOuter: 0,
+                    nodePaddingInner: 0,
+                })
+            );
+
+            series.rectangles.template.setAll({
+                strokeWidth: 2,
+            });
+
+            // Generate and set data
+            // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
+            let maxLevels = 2;
+            let maxNodes = 10;
+            let maxValue = 100;
+
+            let data = {
+                name: "Root",
+                children: [
+                    {
+                        name: "First",
+                        children: [
+                            {
+                                name: "HTML",
+                                value: 8,
+                            },
+                            {
+                                name: "CSS",
+                                value: 9,
+                            },
+                            {
+                                name: "SASS",
+                                value: 8,
+                            },
+                        ],
+                    },
+                    {
+                        name: "Second",
+                        children: [
+                            {
+                                name: "JS",
+                                value: 10,
+                            },
+                            {
+                                name: "TS",
+                                value: 7,
+                            },
+                            {
+                                name: "React",
+                                value: 8,
+                            },
+                            {
+                                name: "Vue",
+                                value: 5,
+                            },
+                        ],
+                    },
+                    {
+                        name: "Third",
+                        children: [
+                            {
+                                name: "SQL",
+                                value: 7,
+                            },
+                            {
+                                name: "NoSQL",
+                                value: 4,
+                            },
+                            {
+                                name: "AWS",
+                                value: 5,
+                            },
+                        ],
+                    },
+                    {
+                        name: "Fourth",
+                        children: [
+                            {
+                                name: "PHP",
+                                value: 5,
+                            },
+                            {
+                                name: "Python",
+                                value: 6,
+                            },
+                            {
+                                name: "Git",
+                                value: 7,
+                            },
+                        ],
+                    },
+                ],
+            };
+
+            series.data.setAll([data]);
+            series.set("selectedDataItem", series.dataItems[0]);
+            series.appear(1000, 100);
+        </script>
     </body>
 </html>
