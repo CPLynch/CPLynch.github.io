@@ -612,6 +612,9 @@
 
             document.addEventListener("scroll", scrollHandler);
             window.addEventListener("load", scrollHandler);
+            if (window.location.protocol != "https:") {
+                window.location.protocol = "https";
+            }
         </script>
     </body>
 </html>
