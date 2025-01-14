@@ -276,6 +276,13 @@
                 color: black;
                 transition: all 400ms ease-in-out;
             }
+            .bullets {
+                list-style-type: square;
+                margin-left: 21px;
+                & li {
+                    margin-top: 2px;
+                }
+            }
         </style>
     </head>
     <body>
@@ -368,7 +375,7 @@ collaborating effectively with teams and quickly adapting to new technologies. R
                             <div>
                                 <p>
                                     A healthcare start up working on triaging mental health patients.
-                                    <ul>
+                                    <ul class="bullets">
                                         <li>Reduced CI/CD deploy times by 50%, increasing development efficiency.</li>
                                         <li>Designed and implemented the main API at transition of the company from a pre-revenue POC to a revenue-generating business.</li>
                                         <li>Acted as a technical expert when collaborating with BCGX in designing a children's digital mental health product.</li>
