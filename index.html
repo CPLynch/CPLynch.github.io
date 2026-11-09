@@ -1,674 +1,616 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta
-            name="description"
-            content="Charlie Lynch is a Full-stack Web developer based out of Cambridge UK. Specialised in Javascript, Typescript, associated frameworks, and AWS."
-        />
-        <title>Charlie Lynch</title>
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.5 system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="description" content="Charles Lynch, Senior Software Engineer in healthtech and medtech, based in Cambridge, UK. Experience, skills, education and contact details.">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="Charles Lynch CV">
+<meta property="og:description" content="Charles Lynch, Senior Software Engineer in healthtech and medtech, based in Cambridge, UK. Experience, skills, education and contact details.">
+<meta name="theme-color" content="#F5F5F3">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2032%2032%27%3E%3Crect%20width%3D%2732%27%20height%3D%2732%27%20rx%3D%277%27%20fill%3D%27%23F5F5F3%27/%3E%3Cpath%20d%3D%27M3%2018h7l2-3%203%2010%203-19%203%2012h8%27%20fill%3D%27none%27%20stroke%3D%27%231D5C96%27%20stroke-width%3D%272.4%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27/%3E%3C/svg%3E">
+<title>Charles Lynch CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Schibsted+Grotesk:wght@500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+:root {
+  /* Layout: one centred column on ECG paper. Sections are plain cards that stay open.
+     A single heartbeat line runs from a node under the name through every section,
+     drawing once as each join scrolls into view. */
+  --paper: #F5F5F3;
+  --paper-veil: rgba(245, 245, 243, .9);
+  --paper-0: rgba(245, 245, 243, 0);
+  --surface: #FFFFFF;
+  --ink: #242324;
+  --ink-2: #5A5859;
+  --line: #262626;         /* black trace, as on a printed ECG */
+  --accent: #3D7DBF;       /* clinical blue for small markers */
+  --accent-deep: #1D5C96;  /* clinical blue for accent text, 7:1 on white */
+  --ring: #DBDBD8;
+  --rule: #E7E7E4;
+  --grid-major: rgba(36, 36, 36, .12);  /* 5 mm squares */
+  --grid-dot: rgba(36, 36, 36, .28);    /* 1 mm dots */
+  --shadow: rgba(20, 20, 20, .12);
 
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Homemade+Apple&family=Roboto&display=swap"
-            as="font" 
-            rel="preload" 
-            crossorigin 
-        />
-        <link rel="preload" href="../fonts/CoolveticaV2.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-        <link rel="preload" href="../fonts/CoolveticaV2.woff" as="font" type="font/woff" crossorigin="anonymous">
-        <link rel="preload" href="../fonts/CoolveticaV2.otf" as="font" type="font/opentype" crossorigin="anonymous">
+  --f-display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --f-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-mono: "Fragment Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-        <style>
-            @font-face {
-                font-family: "Coolvetica";
-                src: url("../fonts/CoolveticaV2.otf");
-                src: url("../fonts/CoolveticaV2.woff2") format("woff2");
-                src: url("../fonts/CoolveticaV2.woff") format("woff");
-                /* font-display: swap; */
-            }
-            body {
-                margin: 0;
-                /* background-color: #FDEEBE; */
-            }
-            * {
-                box-sizing: border-box;
-            }
+  --ax: 32px;        /* where the line meets each card, measured from the column edge */
+  --link-h: 120px;   /* height of each join between sections */
+  --bar-h: 56px;
+}
+@media (min-width: 600px) { :root { --ax: 48px; --link-h: 140px; } }
 
-            h1 {
-                font-size: 2rem;
-                text-align: center;
-                margin: 0;
-                position: relative;
-                bottom: 9px;
-            }
-            h2 {
-                margin: 0px;
-            }
+*, *::before, *::after { box-sizing: border-box; }
 
-            ul {
-                list-style-type: none;
-                padding: 0px;
-                margin: 0px;
-            }
+body {
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
+    radial-gradient(circle at .5px .5px, var(--grid-dot) .75px, transparent 1.15px);
+  background-size: 40px 40px, 40px 40px, 8px 8px;
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 30; background: var(--paper);
+}
+a { color: var(--accent-deep); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--accent-deep); outline-offset: 3px; border-radius: 4px; }
 
-            nav a {
-                text-decoration: none;
-                color: inherit;
-            }
-            body {
-                font-family: "Helvetica Neue", sans-serif;
-            }
+.wrap {
+  width: 100%; max-width: 752px; margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
 
-            .html-tag {
-                font-family: "Homemade Apple", cursive;
-                color: #e37b4c;
-                opacity: 0.7;
-            }
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+  background: var(--paper-veil);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.topbar-in {
+  max-width: 1080px; margin-inline: auto; height: var(--bar-h);
+  display: flex; align-items: center; gap: 16px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.brand {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 700 1rem/1 var(--f-display); letter-spacing: -.01em;
+  color: var(--ink); text-decoration: none; white-space: nowrap;
+}
+.nav { display: none; list-style: none; margin: 0 0 0 auto; padding: 0; gap: 2px; }
+.nav a {
+  display: block; padding: 8px 10px; border-radius: 999px;
+  font: 500 .875rem/1 var(--f-display); color: var(--ink-2); text-decoration: none;
+  transition: color .2s, background-color .2s, box-shadow .2s;
+}
+.nav a:hover { color: var(--accent-deep); background: var(--rule); }
+.nav a[aria-current="true"] { color: var(--accent-deep); background: var(--surface); box-shadow: inset 0 0 0 1px var(--ring); }
+@media (min-width: 920px) { .nav { display: flex; } }
+.pdf-btn {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 32px; padding: 0 12px 0 10px;
+  border-radius: 999px; border: 1px solid var(--ring); background: var(--surface);
+  font: 600 .8125rem/1 var(--f-display); color: var(--accent-deep); text-decoration: none; white-space: nowrap;
+  transition: color .2s, background-color .2s, border-color .2s;
+}
+.pdf-btn svg { width: 14px; height: 14px; flex: none; }
+.pdf-btn:hover { background: var(--rule); border-color: var(--ink-2); color: var(--ink); }
+.pdf-btn[aria-busy="true"] { cursor: progress; }
 
-            .html-tag.level-1 {
-                /* color: #97cbf4; */
-                margin-bottom: -2px;
-                margin-left: 2rem;
-            }
-            .html-tag.level-2 {
-                /* color: #cfbdee; */
-                margin-bottom: -2px;
-                margin-left: 2rem;
-            }
-            .html-tag.level-3 {
-                /* color: #f794c0; */
-                margin-top: -3px;
-                margin-bottom: -3px;
-                margin-left: 2.5rem;
-            }
+/* ---------- intro ---------- */
+.hero { position: relative; isolation: isolate; display: grid; gap: 14px; padding-block: clamp(32px, 8vh, 88px) 0; }
+/* Plain paper behind the intro, full width, fading back into the grid where the heartbeat line begins.
+   border-image outset paints past the column without making the page scroll sideways. */
+.hero::before {
+  content: ""; position: absolute; z-index: -1; inset: 0 0 -210px 0; pointer-events: none;
+  border-image: linear-gradient(to bottom, var(--paper) calc(100% - 210px), var(--paper-0)) fill 0 // 0 100vw;
+  border-image: linear-gradient(to bottom,
+      var(--paper) calc(100% - 210px),
+      color-mix(in srgb, var(--paper) 80%, transparent) calc(100% - 150px),
+      color-mix(in srgb, var(--paper) 45%, transparent) calc(100% - 90px),
+      color-mix(in srgb, var(--paper) 15%, transparent) calc(100% - 35px),
+      var(--paper-0)) fill 0 // 0 100vw;
+}
+.eyebrow {
+  margin: 0; font: 400 .75rem/1.3 var(--f-mono); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--accent-deep);
+}
+.hero h1 {
+  margin: 0; font: 800 clamp(2.9rem, 6vw + 1.4rem, 5.25rem)/.94 var(--f-display);
+  letter-spacing: -.04em; text-wrap: balance;
+}
+.role-line { margin: 2px 0 0; font: 600 clamp(1.05rem, .5vw + .95rem, 1.25rem)/1.3 var(--f-display); color: var(--accent-deep); }
 
-            h1,
-            h2,
-            h3 {
-                font-family: Coolvetica;
-            }
+/* ---------- the line ---------- */
+.link { position: relative; z-index: 1; height: var(--link-h); }
+.link-hero { height: 132px; }
+.link .origin { fill: var(--paper); stroke: var(--line); stroke-width: 1.5; }
+.link svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.link path { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+.js .link path { stroke-dasharray: 1 2; stroke-dashoffset: 1.01; }
+.js .link.is-drawn path { stroke-dashoffset: 0; transition: stroke-dashoffset var(--draw, .9s) cubic-bezier(.45, 0, .25, 1); }
+.reduce .link path { stroke-dashoffset: 0 !important; transition: none !important; }
 
-            main {
-                max-width: 2000px;
-                margin: 0 auto;
-            }
+/* ---------- sections ---------- */
+.card {
+  position: relative; z-index: 2; display: grid; gap: 18px;
+  padding: 26px 20px 28px;
+  background: var(--surface); border: 1px solid var(--ring); border-radius: 18px;
+  box-shadow: 0 18px 40px -32px var(--shadow);
+  scroll-margin-top: calc(var(--bar-h) + 24px);
+}
+@media (min-width: 600px) { .card { padding: 34px 40px 36px; gap: 20px; } }
+.card-head { display: grid; gap: 6px; }
+.card h2 {
+  margin: 0; font: 700 clamp(1.55rem, 1.4vw + 1.15rem, 2.05rem)/1.08 var(--f-display);
+  letter-spacing: -.025em; text-wrap: balance;
+}
+.meta { margin: 0; font: 500 .95rem/1.45 var(--f-display); color: var(--ink-2); }
+.card p { margin: 0; max-width: 62ch; }
+/* a group label opens with a rule above it; the first item under it drops its own rule */
+.group {
+  margin: 6px 0 -10px; padding-top: 16px; border-top: 1px solid var(--rule);
+  font: 400 .72rem/1.3 var(--f-mono); letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-2);
+}
+.card .group { max-width: none; }
+.group + .routes > li:first-child,
+.group + .earlier > li:first-child { border-top: 0; padding-top: 4px; }
 
-            nav a {
-                padding: 1rem 0.5rem;
-            }
-            nav a:hover {
-                border-bottom: 4px solid #97cbf4;
-                padding-bottom: calc(1rem - 4px);
-            }
-            nav a:hover:nth-of-type(1) {
-                border-color: #6a3791;
-            }
-            nav a:hover:nth-of-type(2) {
-                border-color: #0a7362;
-            }
-            nav a:hover:nth-of-type(3) {
-                border-color: #115b98;
-            }
-            nav a:hover:nth-of-type(4) {
-                border-color: #b5562b;
-            }
-            nav a:hover:nth-of-type(5) {
-                border-color: #9c2246;
-            }
-            h1,
-            h2,
-            p,
-            li,
-            code,
-            .skills,
-            #chartdiv {
-                margin-left: 4rem;
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-            .section-container {
-                max-width: 800px;
-                margin: 0 auto;
-                position: relative;
-                right: 2rem;
-            }
-            #chartdiv {
-                width: calc(100% - 4rem);
-                height: 25rem;
-            }
-            nav {
-                display: none;
-            }
-            @media all and (min-width: 50em) {
-                h1,
-                h2,
-                p,
-                li,
-                code,
-                .skills,
-                #chartdiv {
-                    margin-left: 8rem;
-                    margin-top: 0px;
-                    margin-bottom: 0px;
-                }
-                .section-container {
-                    max-width: 800px;
-                    margin: 0 auto;
-                    position: relative;
-                    right: 4rem;
-                }
-                #chartdiv {
-                    width: calc(100% - 8rem);
-                    height: 20rem;
-                }
-                .heading .section-container {
-                    padding-top: 3.5rem;
-                }
-                .html-tag.level-1 {
-                    margin-left: 0px;
-                }
-                .html-tag.level-2 {
-                    margin-bottom: -2px;
-                    margin-left: 1.5rem;
-                }
-                .html-tag.level-3 {
-                    margin-top: -3px;
-                    margin-bottom: -3px;
-                    margin-left: 5rem;
-                }
-                .html-tag {
-                    opacity: 0.9;
-                }
-                nav {
-                    display: flex;
-                    justify-content: center;
-                    position: fixed;
-                    z-index: 2;
-                    top: 0px;
-                    left: 0px;
-                    width: 100%;
-                    background-color: rgba(255, 255, 255, 0.9);
-                    box-shadow: 0 6px 12px -2px rgba(50, 50, 93, 0.25), 0 3px 7px -3px rgba(0, 0, 0, 0.3);
-                }
-            }
-            li * {
-                margin-left: 0;
-            }
-            .job-title {
-                margin-bottom: 1rem;
-                margin-top: 2rem;
-                font-weight: 600;
-            }
-            li:first-of-type .job-title {
-                margin-top: 0;
-            }
-            #education > div > ul > li:not(:first-child),
-            #contact > div > ul > li:not(:first-child) {
-                margin-top: 2rem;
-            }
-            #education > div > ul > li > span {
-                font-weight: bold;
-            }
-            .heading {
-                border-left: 20px solid #e37b4c;
-                border-right: 20px solid #e37b4c;
-            }
+.facts {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 12px;
+  margin: 2px 0 0; padding-top: 18px; border-top: 1px solid var(--rule);
+}
+@media (min-width: 600px) { .facts { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.facts div { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.facts dt { font: 700 clamp(1.15rem, 1vw + .9rem, 1.45rem)/1.1 var(--f-display); color: var(--accent-deep); letter-spacing: -.02em; }
+.facts dd { margin: 0; font: 400 .7rem/1.4 var(--f-mono); letter-spacing: .04em; color: var(--ink-2); }
 
-            section {
-                padding-top: 5px;
-                border-top: 1px dashed black;
-                border-left: 20px solid black;
-                border-right: 20px solid black;
-            }
-            section:nth-of-type(1) {
-                border-color: #6a3791;
-            }
 
-            section:nth-of-type(2) {
-                border-color: #0a7362;
-            }
-            section:nth-of-type(3) {
-                border-color: #115b98;
-            }
-            section:nth-of-type(4) {
-                border-color: #b5562b;
-            }
-            section:nth-of-type(5) {
-                border-color: #9c2246;
-            }
-            section:nth-of-type(1) .html-tag {
-                color: #6a3791;
-            }
+.routes { list-style: none; margin: 0; padding: 0; display: grid; }
+.routes li { display: grid; gap: 4px 20px; padding-block: 14px; border-top: 1px solid var(--rule); }
+@media (min-width: 600px) { .routes li { grid-template-columns: 10rem minmax(0, 1fr); } }
+.route { font: 400 .8125rem/1.55 var(--f-mono); color: var(--ink); }
+.route-body { display: grid; gap: 8px; min-width: 0; }
+.route-body p { font-size: 1rem; line-height: 1.5; }
+.std-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.std {
+  font: 400 .7rem/1 var(--f-mono); padding: 5px 8px; border-radius: 6px;
+  background: var(--paper); border: 1px solid var(--rule); color: var(--accent-deep);
+}
+.note { font: 400 .75rem/1.6 var(--f-mono); color: var(--ink-2); }
 
-            section:nth-of-type(2) .html-tag {
-                color: #0a7362;
-            }
-            section:nth-of-type(3) .html-tag {
-                color: #115b98;
-            }
-            section:nth-of-type(4) .html-tag {
-                color: #b5562b;
-            }
-            section:nth-of-type(5) .html-tag {
-                color: #9c2246;
-            }
-            .cvd-cont {
-                position: fixed;
-                z-index: 100;
-                bottom: 0px;
-                left: 0px;
-                width: 100%;
-            }
-            .cvd-cont > div {
-                max-width: 2000px;
-                margin: 0 auto;
-                position: relative;
-            }
-            .cv-download {
-                position: absolute;
-                bottom: 1rem;
-                right: 2.5rem;
-                background-color: rgba(255, 255, 255, 0.9);
-                padding: 0.5rem 0.7rem;
-                border: 5px solid #6a3791;
-                border-color: #6a3791;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                z-index: 100;
-                color: black;
-                transition: all 400ms ease-in-out;
-            }
-            .bullets {
-                list-style-type: square;
-                margin-left: 21px;
-                & li {
-                    margin-top: 2px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div class="cvd-cont">
-            <div>
-                <a href="./Charlie-Lynch-Curriculum-Vitae.pdf" download>
-                    <div id="cvd" class="cv-download">
-                        PDF <img style="height: 1rem" alt="download icon" src="./images/download.svg" />
-                    </div>
-                </a>
-            </div>
-        </div>
+.job { display: grid; gap: 10px; }
+.job-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 2px 16px; }
+.job h3 { margin: 0; font: 700 1.2rem/1.25 var(--f-display); letter-spacing: -.01em; }
+.when { font: 400 .75rem/1.3 var(--f-mono); letter-spacing: .04em; color: var(--ink-2); white-space: nowrap; }
+.org { font: 500 .95rem/1.4 var(--f-display); color: var(--ink-2); }
 
-        <nav>
-            <a
-                href="#"
-                onclick="document.querySelector('#summary').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
-                >Summary</a
-            >
-            <a
-                href="#"
-                onclick="document.querySelector('#skills').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
-                >Skills</a
-            >
-            <a
-                href="#"
-                onclick="document.querySelector('#experience').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
-                >Experience</a
-            >
-            <a
-                href="#"
-                onclick="document.querySelector('#education').scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
-                >Education</a
-            >
-            <a
-                href="#"
-                onclick="document.querySelector('#contact' ).scrollIntoView({behavior : 'smooth'}); event.preventDefault();"
-                >Contact</a
-            >
-        </nav>
-        <main>
-            <div class="heading">
-                <div class="section-container">
-                    <div class="html-tag level-1">&lt;main&gt;</div>
-                    <div class="html-tag level-2">&lt;h1&gt;</div>
-                    <h1>Charlie Lynch</h1>
-                    <div class="html-tag level-2">&lt;/h1&gt;</div>
-                </div>
-            </div>
+.points { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.points li { position: relative; padding-left: 22px; max-width: 62ch; }
+.points li::before { content: ""; position: absolute; left: 2px; top: .78em; width: 10px; height: 2px; background: var(--accent); }
 
-            <section id="summary">
-                <div class="section-container">
-                    <div class="html-tag level-2">&lt;section&gt;</div>
+.earlier { list-style: none; margin: 0; padding: 0; display: grid; }
+.earlier > li { display: grid; gap: 4px; padding-block: 14px; border-top: 1px solid var(--rule); }
+.earlier > li:last-child { padding-bottom: 0; }
+.earlier h3, .earlier h4 { margin: 0; font: 600 1rem/1.35 var(--f-display); }
+.earlier p { font-size: .975rem; line-height: 1.5; color: var(--ink-2); }
+.earlier .endorse { margin-top: 4px; font-style: italic; color: var(--ink); }
+.earlier .endorse span { display: block; margin-top: 2px; font: 400 .72rem/1.4 var(--f-mono); color: var(--ink-2); }
+.earlier .points { gap: 6px; margin-top: 4px; }
+.earlier .points li { font-size: .975rem; line-height: 1.5; color: var(--ink-2); }
+.earlier .points b { font-weight: 600; color: var(--ink); }
 
-                    <div class="html-tag level-3">&lt;h2&gt;</div>
-                    <h2>Summary</h2>
-                    <div class="html-tag level-3">&lt;/h2&gt;</div>
-                    <div class="html-tag level-3">&lt;p&gt;</div>
-                    <p>
-                        I am a full-stack software developer specialising in web applications. I excel in contributing to the successful design of products by identifying potential pitfalls and providing actionable feedback on designs and business specifications, technical implementation of those specifications, and
-collaborating effectively with teams and quickly adapting to new technologies. Recently, I completed a Master's in Computer Science alongside my work to broaden my expertise and address any gaps in my knowledge.
 
-                    </p>
-                    <div class="html-tag level-3">&lt;p&gt;</div>
-                    <div class="html-tag level-2">&lt;/section&gt;</div>
-                </div>
-            </section>
-            <section id="skills">
-                <div class="section-container">
-                    <div class="html-tag level-2">&lt;section&gt;</div>
-                    <div class="html-tag level-3">&lt;h2&gt;</div>
-                    <h2>Skills (relative by size)</h2>
-                    <div class="html-tag level-3">&lt;/h2&gt;</div>
-                    <div class="html-tag level-3">&lt;div&gt;</div>
-                    <div id="chartdiv"></div>
-                    <div class="html-tag level-3">&lt;/div&gt;</div>
-                    <div class="html-tag level-2">&lt;/section&gt;</div>
-                </div>
-            </section>
-            <section id="experience">
-                <div class="section-container">
-                    <div class="html-tag level-2">&lt;section&gt;</div>
-                    <div class="html-tag level-3">&lt;h2&gt;</div>
-                    <h2>Experience</h2>
-                    <div class="html-tag level-3">&lt;/h2&gt;</div>
-                    <div class="html-tag level-3">&lt;ul&gt;</div>
-                    <ul>
-                           <li>
-                            <div class="job-title">Psyomics (August 2022 – Present) - Full-Stack Software Engineer</div>
-                    
-                            <div>
-                                <p>
-                                    A healthcare start up working on triaging mental health patients.
-                                    <ul class="bullets">
-                                        <li>Reduced CI/CD deploy times by 50%, increasing development efficiency.</li>
-                                        <li>Designed and implemented the main API at transition of the company from a pre-revenue POC to a revenue-generating business.</li>
-                                        <li>Acted as a technical expert when collaborating with BCGX in designing a children's digital mental health product.</li>
-                                        <li>Developed and validated clinical data for evaluation reports to submit for auditing, and am SME on the implementation of diagnostic algorithms for 15 mental health conditions based on the DSM-5.</li>
-                                        <li>Integrated NHS Login (OIDC) and SAML authentication for patient and NHS trust system access.</li>
-                                        <li>Led AWS infrastructure upgrades and PostgreSQL schema design, ensuring scalability and efficiency.</li>
-                                        <li>Working within a highly regulated medical device environment.</li>
-                                        <li>Provided front-end development best practices and guidance (React, TypeScript). For example, performed a migration from Create-React-App to Vite reducing our local development frontend spin up time from over 30 seconds to less than 2 seconds.</li>
-                                    </ul>
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="job-title">Morta (Apr 2020 - Nov 2020) - Full-Stack Developer</div>
-                            <div>
-                                <p>
-                                    I worked as the first employee at this startup, a company that provides a web
-                                    application for managing the intricacies of large civil-engineering projects and the
-                                    many contractors involved. I was working with React, TypeScript, and Flask on
-                                    Python, day to day.
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="job-title">Green Custard (Nov 2018 - Nov 2019) - Full-Stack Developer</div>
-                            <div>
-                                <p>
-                                    Green Custard is a consultancy that creates bespoke mvp style web applications. I
-                                    worked on apps for HSBC, JLL, Joint Analytics, and Verizon. My time here involved a
-                                    lot of Typescript, React, and Vue. The company was an extremely close partner with
-                                    AWS, so we made use of a lot of its services, such as Lambda, S3, Cognito, etc.
-                                </p>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="job-title">The Lettings Hub (Nov 2016 - Apr 2018) - Software Developer</div>
-                            <div>
-                                <p>
-                                    At The Lettings Hub I worked on an insurance platform that managed Landlords
-                                    property insurance and this was integrated into the onsite call centre. This was a
-                                    LAMP stack.
-                                </p>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="html-tag level-3">&lt;/ul&gt;</div>
-                    <div class="html-tag level-2">&lt;/section&gt;</div>
-                </div>
-            </section>
-            <section id="education">
-                <div class="section-container">
-                    <div class="html-tag level-2">&lt;section&gt;</div>
-                    <div class="html-tag level-3">&lt;h2&gt;</div>
-                    <h2>Education</h2>
-                    <div class="html-tag level-3">&lt;/h2&gt;</div>
-                    <div class="html-tag level-3">&lt;ul&gt;</div>
-                    <ul>
-                        <li>
-                            <span>University of Keele - Computer Science MSc</span><br />
-                            (Completed 2023)
-                        </li>
-                        <li>
-                            <span>University of Bath - Natural Sciences MSc</span><br />
-                            (2014 - 2016) (Uncompleted)
-                        </li>
-                        <li>
-                            <span>A Levels - A*A*A/A (Maths, Bio, Chem, Phys)</span><br />
-                            (Achieved 2014)
-                        </li>
-                        <li>
-                            <span>Certifications:</span>
-                            <ul>
-                                <li><span>AWS Solutions Architect - Associate</span> 2019</li>
-                                <li><span>UIpath practitioner</span> - 2018</li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="html-tag level-3">&lt;/ul&gt;</div>
-                    <div class="html-tag level-2">&lt;/section&gt;</div>
-                </div>
-            </section>
-            <section id="contact">
-                <div class="section-container">
-                    <div class="html-tag level-2">&lt;section&gt;</div>
-                    <div class="html-tag level-3">&lt;h2&gt;</div>
-                    <h2>Contact</h2>
-                    <div class="html-tag level-3">&lt;/h2&gt;</div>
-                    <div class="html-tag level-3">&lt;ul&gt;</div>
-                    <ul>
-                        <li>
-                            <a target="_blank" href="https://www.linkedin.com/in/charlie-lynch/">LinkedIn</a>
-                        </li>
-                        <li><span>Email:</span> <a href="mailto:cl@charlielynch.co.uk">cl@charlielynch.co.uk</a></li>
-                        <li><span> Mobile:</span> 07739525546</li>
-                    </ul>
+.stdlist { display: grid; gap: 14px 24px; margin: 0; padding-top: 18px; border-top: 1px solid var(--rule); }
+@media (min-width: 600px) { .stdlist { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.stdlist div { display: grid; gap: 2px; min-width: 0; }
+.stdlist dt { font: 600 .95rem/1.3 var(--f-display); }
+.stdlist dd { margin: 0; font-size: .95rem; line-height: 1.45; color: var(--ink-2); overflow-wrap: anywhere; }
 
-                    <div class="html-tag level-3">&lt;/ul&gt;</div>
-                    <div class="html-tag level-2">&lt;/section&gt;</div>
-                    <div class="html-tag level-1">&lt;/main&gt;</div>
-                </div>
-            </section>
-        </main>
-        <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/hierarchy.js"></script>
-        <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
-        <script>
-            let root = am5.Root.new("chartdiv");
+.kit { display: grid; gap: 14px; margin: 0; }
+.kit div { display: grid; gap: 8px; }
+@media (min-width: 600px) { .kit div { grid-template-columns: 9rem minmax(0, 1fr); align-items: start; } }
+.kit dt { font: 400 .72rem/1.4 var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); padding-top: 7px; }
+.kit dd { margin: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.chip {
+  font: 500 .85rem/1 var(--f-display); padding: 7px 11px; border-radius: 999px;
+  background: var(--paper); border: 1px solid var(--rule); color: var(--ink);
+}
 
-            root.setThemes([am5themes_Animated.new(root)]);
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.email {
+  font: 400 1rem/1.3 var(--f-mono); padding: 10px 14px; border-radius: 10px;
+  background: var(--paper); border: 1px solid var(--rule); color: var(--ink);
+  user-select: all; overflow-wrap: anywhere;
+}
+.btn {
+  font: 600 .875rem/1 var(--f-display); padding: 11px 16px; border-radius: 999px; cursor: pointer;
+  border: 1.5px solid var(--accent-deep); background: var(--accent-deep); color: var(--surface);
+  transition: background-color .2s, border-color .2s;
+}
+.btn:hover { background: var(--ink); border-color: var(--ink); }
 
-            let container = root.container.children.push(
-                am5.Container.new(root, {
-                    width: am5.percent(100),
-                    height: am5.percent(100),
-                    layout: root.verticalLayout,
-                })
-            );
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.skip { position: absolute; z-index: 40; left: max(16px, env(safe-area-inset-left, 0px)); top: -100px; padding: 10px 14px; border-radius: 8px;
+  background: var(--surface); border: 1px solid var(--ring); color: var(--accent-deep); font: 600 .9rem/1 var(--f-display); }
+.skip:focus { top: calc(8px + env(safe-area-inset-top, 0px)); }
+.foot { background: var(--paper); padding-block: 40px 56px; font: 400 .75rem/1.6 var(--f-mono); color: var(--ink-2); }
+.foot p { margin: 0; }
+</style>
+</head>
+<body>
+<a class="skip" href="#profile">Skip to content</a>
+<nav class="topbar" aria-label="Sections">
+  <div class="topbar-in">
+    <a class="brand" href="#top">
+      <span>Charles Lynch</span>
+    </a>
+    <a class="pdf-btn" id="pdf-download" href="Charles-Lynch-CV.pdf" download="Charles-Lynch-CV.pdf">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2.5v7.5M4.75 7 8 10.25 11.25 7M3 13.25h10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Download PDF</span>
+    </a>
+    <span class="sr-only" id="pdf-status" role="status"></span>
+    <ul class="nav">
+      <li><a href="#profile" data-nav="profile">Profile</a></li>
+      <li><a href="#experience" data-nav="experience">Experience</a></li>
+      <li><a href="#skills" data-nav="skills">Skills</a></li>
+      <li><a href="#education" data-nav="education">Education</a></li>
+      <li><a href="#contact" data-nav="contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-            let series = container.children.push(
-                am5hierarchy.Treemap.new(root, {
-                    singleBranchOnly: false,
-                    downDepth: 1,
-                    upDepth: -1,
-                    initialDepth: 2,
-                    valueField: "value",
-                    categoryField: "name",
-                    childDataField: "children",
-                    nodePaddingOuter: 0,
-                    nodePaddingInner: 0,
-                })
-            );
+<main class="wrap">
+  <div class="hero" id="top">
+    <p class="eyebrow">Cambridge, UK</p>
+    <h1>Charles Lynch</h1>
+    <p class="role-line">Senior Software Engineer, Healthtech/Medtech</p>
+  </div>
 
-            series.rectangles.template.setAll({
-                strokeWidth: 2,
-            });
+  <div class="link link-hero" aria-hidden="true"></div>
 
-            // Generate and set data
-            // https://www.amcharts.com/docs/v5/charts/hierarchy/#Setting_data
-            let maxLevels = 2;
-            let maxNodes = 10;
-            let maxValue = 100;
+  <section class="card" id="profile" data-side="right" aria-labelledby="h-profile">
+    <div class="card-head"><h2 id="h-profile">Profile</h2></div>
+    <p>Senior software engineer in the medtech/healthtech space, focused on SaMD products. Experienced across product engineering, NHS integrations (EPR systems, FHIR, NHS login and CIS2) and delivery under an ISO 13485 quality system, including coordinating go-lives with NHS trusts and private providers.</p>
+    <p>Strong front-end skills, with deep CSS knowledge, from patient and clinician portals to component libraries. Good at spotting pitfalls in designs and specifications early, and planning for future bottlenecks.</p>
+    <dl class="facts">
+      <div><dt>10 years</dt><dd>building web software</dd></div>
+      <div><dt>4 years</dt><dd>in health software</dd></div>
+      <div><dt>MSc</dt><dd>Computer Science, Distinction</dd></div>
+      <div><dt>ISO 13485</dt><dd>Lead Auditor training, 2026</dd></div>
+    </dl>
+  </section>
 
-            let data = {
-                name: "Root",
-                children: [
-                    {
-                        name: "First",
-                        children: [
-                            {
-                                name: "HTML",
-                                value: 8,
-                            },
-                            {
-                                name: "CSS/SASS",
-                                value: 9,
-                            },
-    {
-                                name: "UI/UX",
-                                value: 5,
-                            },
-                        
-                        ],
-                    },
-                    {
-                        name: "Second",
-                        children: [
-                            {
-                                name: "JS",
-                                value: 10,
-                            },
-                            {
-                                name: "TS",
-                                value: 10,
-                            },
-                            {
-                                name: "PHP",
-                                value: 3,
-                            },
-                            {
-                                name: "Python",
-                                value: 5,
-                            },
-                            {
-                                name: "GoLang",
-                                value: 2,
-                            },
-                               {
-                                name: "C++",
-                                value: 1,
-                            },
-                        ],
-                    },
-                    {
-                        name: "Third",
-                        children: [
-                            {
-                                name: "SQL",
-                                value: 7,
-                            },
-                            {
-                                name: "NoSQL",
-                                value: 4,
-                            },
-                        ],
-                    },
-                    {
-                        name: "Fourth",
-                        children: [
-                            {
-                                name: "React",
-                                value: 8,
-                            },
-                            {
-                                name: "Vue",
-                                value: 4,
-                            },
-                        ],
-                    },
+  <div class="link" aria-hidden="true"></div>
 
-                    {
-                        name: "Fifth",
-                        children: [
-                            {
-                                name: "Git",
-                                value: 7,
-                            },
-                            {
-                                name: "AWS",
-                                value: 8,
-                            },
-                        ],
-                    },
-   {
-                        name: "Sixth",
-                        children: [
-                            {
-                                name: "Security",
-                                value: 6,
-                            },
-                            {
-                                name: "Testing",
-                                value: 7,
-                            },
-                        ],
-                    },
-                ],
-            };
+  <section class="card" id="experience" data-side="left" aria-labelledby="h-experience">
+    <div class="card-head"><h2 id="h-experience">Experience</h2></div>
+    <div class="job">
+      <div class="job-head"><h3>Senior Software Engineer</h3><span class="when">Aug 2022 – present</span></div>
+      <p class="org">Psyomics · Cambridge · Mental health triage</p>
+      <ul class="points">
+        <li>Co-designed the company's in-house integration engine, which converts supplier EPR data into FHIR, retries failed messages and keeps an audit trail. Built its Rio and IAPTUS adaptors as sole developer; now live with two NHS trusts, including North London NHS Foundation Trust.</li>
+        <li>Designed the product's FHIR APIs and built its NHS identity and messaging integrations: NHS login and CIS2 (OIDC), SAML single sign-on for trust systems, and MESH.</li>
+        <li>Technical coordinator for several go-lives with NHS trusts and private providers, including accelerating a go-live with Midlands Partnership University NHS Foundation Trust ahead of schedule.</li>
+        <li>Line manage one software engineer, including regular one-to-ones and their development plan, and take part in hiring decisions.</li>
+        <li>Carried out technical due diligence on a potential SaMD acquisition jointly with the Head of Engineering, including calls with the target’s engineering team.</li>
+        <li>Designed and built the main API as the company moved from a pre-revenue proof of concept to a revenue-generating business. It serves organisations that integrate in-house rather than through the engine.</li>
+        <li>Key engineer on the rewrite of the core product from MVP to a maintainable platform developed under the company’s ISO 13485 quality management system.</li>
+        <li>Built the patient and clinician portals, and set up the Storybook component libraries. Advocated for accessibility and responsive-design improvements across the product.</li>
+        <li>Compiled and validated clinical data for evaluation reports submitted to the MHRA.</li>
+        <li>Own and maintain the diagnostic algorithms for 15 mental health conditions, based on DSM-5, with test cases built alongside clinical experts.</li>
+        <li>Manage the platform’s AWS infrastructure as code with Terraform, keeping environments repeatable and changes traceable. Led infrastructure upgrades and the PostgreSQL schema design.</li>
+      </ul>
+    </div>
+    <h3 class="group">Earlier roles</h3>
+    <ul class="earlier">
+      <li>
+        <div class="job-head"><h4>Full-Stack Engineer, Morta</h4><span class="when">Apr – Nov 2020</span></div>
+        <p>First employee at a start-up building software for large civil engineering projects and their contractors. Built Airtable-style spreadsheet tools for the construction industry. React, TypeScript and Python (Flask).</p>
+      </li>
+      <li>
+        <div class="job-head"><h4>Full-Stack Engineer, Green Custard</h4><span class="when">Nov 2018 – Nov 2019</span></div>
+        <p>Consultancy building bespoke MVP web apps for clients including HSBC, JLL and Verizon, and a progressive web app for Joint Analytics. TypeScript, React and Vue on AWS (Lambda, S3, Cognito).</p>
+      </li>
+      <li>
+        <div class="job-head"><h4>Software Engineer, The Lettings Hub</h4><span class="when">Nov 2016 – Apr 2018</span></div>
+        <p>Landlord property insurance platform, integrated with the on-site call centre. Built front ends in vanilla JavaScript and jQuery on a LAMP stack.</p>
+        <p class="endorse">“Probably the best employee I’ve ever had.”<span>Paul Swift, Engineering Lead · <a href="https://www.linkedin.com/in/charlie-lynch/details/recommendations/" target="_blank" rel="noopener">read on LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></span></p>
+      </li>
+      <li>
+        <div class="job-head"><h4>Freelance Software Engineer</h4><span class="when">2019 – 2022</span></div>
+        <p>Projects between roles, including a platform for massage therapists, an art website and an e-commerce store.</p>
+      </li>
+    </ul>
+    <h3 class="group">Own product</h3>
+    <ul class="earlier">
+      <li>
+        <div class="job-head"><h4>Aglio</h4><span class="when">2026</span></div>
+        <p>An app that generates recipes with AI to suit a family’s preferences, then orders the ingredients from the supermarket. Built for Android and iOS using Kotlin, and currently in testing and app-store review.</p>
+      </li>
+    </ul>
+    <h3 class="group">Alongside</h3>
+    <ul class="earlier">
+      <li>
+        <div class="job-head"><h4>District Councillor, West Suffolk Council</h4><span class="when">May 2023 – Apr 2027</span></div>
+        <p>Part-time, standing down in April 2027. Member of three committees:</p>
+        <ul class="points">
+          <li><b>Performance and Audit Scrutiny Committee</b>, reviewing the council's financial and non-financial performance</li>
+          <li><b>Licensing and Regulatory Committee</b>, covering licensing policy and licence decisions</li>
+          <li><b>Development Control Committee</b>, deciding significant planning applications</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
 
-            series.data.setAll([data]);
-            series.set("selectedDataItem", series.dataItems[0]);
-            series.appear(1000, 100);
+  <div class="link" aria-hidden="true"></div>
 
-            function throttle(func) {
-                let inProgress = false;
-                return function () {
-                    if (inProgress) {
-                        return;
-                    }
-                    inProgress = true;
-                    setTimeout(() => {
-                        func();
-                        inProgress = false;
-                    }, 100);
-                };
-            }
+  <section class="card" id="skills" data-side="right" aria-labelledby="h-skills">
+    <div class="card-head"><h2 id="h-skills">Skills</h2></div>
+    <dl class="kit">
+      <div><dt>Languages</dt><dd><ul class="chips" role="list"><li class="chip">TypeScript</li><li class="chip">JavaScript</li><li class="chip">Python</li><li class="chip">SQL</li></ul></dd></div>
+      <div><dt>Front end</dt><dd><ul class="chips" role="list"><li class="chip">HTML</li><li class="chip">React</li><li class="chip">Storybook</li><li class="chip">Accessibility</li><li class="chip">Responsive design</li></ul></dd></div>
+      <div><dt>Styling</dt><dd><ul class="chips" role="list"><li class="chip">CSS</li><li class="chip">Sass/SCSS</li><li class="chip">CSS modules</li><li class="chip">Tailwind</li><li class="chip">styled-components</li><li class="chip">Design tokens</li><li class="chip">Animations</li></ul></dd></div>
+      <div><dt>Back end</dt><dd><ul class="chips" role="list"><li class="chip">Node.js</li><li class="chip">GraphQL</li><li class="chip">REST APIs</li><li class="chip">PostgreSQL</li></ul></dd></div>
+      <div><dt>Testing</dt><dd><ul class="chips" role="list"><li class="chip">Jest</li><li class="chip">Vitest</li><li class="chip">Playwright</li></ul></dd></div>
+      <div><dt>Cloud and delivery</dt><dd><ul class="chips" role="list"><li class="chip">AWS</li><li class="chip">Terraform</li><li class="chip">Docker</li><li class="chip">CI/CD</li></ul></dd></div>
+      <div><dt>Health and regulatory</dt><dd><ul class="chips" role="list"><li class="chip">FHIR</li><li class="chip">NHS login</li><li class="chip">CIS2</li><li class="chip">MESH</li><li class="chip">OIDC</li><li class="chip">SAML</li><li class="chip">ISO 13485</li></ul></dd></div>
+      <div><dt>Ways of working</dt><dd><ul class="chips" role="list"><li class="chip">AI-assisted development</li></ul></dd></div>
+    </dl>
+  </section>
 
-            let scrollHandler = throttle(function (e) {
-                color = ["#6a3791", "#0a7362", "#115b98", "#b5562b", "#9c2246"];
-                let index = 0;
-                document.querySelectorAll("section").forEach(function (elem, i) {
-                    let top = elem.getBoundingClientRect().top;
-                    let bot = elem.getBoundingClientRect().bottom;
-                    if (window.innerHeight / 2 > top && window.innerHeight / 2 < bot) {
-                        index = i;
-                    }
-                });
+  <div class="link" aria-hidden="true"></div>
 
-                document.getElementById("cvd").style.borderColor = color[index];
-            });
+  <section class="card" id="education" data-side="left" aria-labelledby="h-education">
+    <div class="card-head"><h2 id="h-education">Education</h2></div>
+    <ul class="earlier">
+      <li>
+        <div class="job-head"><h3>MSc Computer Science, Keele University</h3><span class="when">2023</span></div>
+        <p>Distinction, completed alongside full-time work.</p>
+      </li>
+      <li>
+        <div class="job-head"><h3>A levels, Bedford Sixth Form</h3><span class="when">2014</span></div>
+        <p>A*A*A/A in Maths, Biology, Chemistry and Physics.</p>
+      </li>
+    </ul>
+    <h3 class="group">Certificates</h3>
+    <ul class="earlier">
+      <li>
+        <div class="job-head"><h4>MD-QMS ISO 13485 Lead Auditor, Comply Guru</h4><span class="when">2026</span></div>
+      </li>
+      <li>
+        <div class="job-head"><h4>HashiCorp Certified: Terraform Associate</h4><span class="when">2026</span></div>
+      </li>
+      <li>
+        <div class="job-head"><h4>AWS Certified Solutions Architect – Associate</h4><span class="when">2019 – 2022</span></div>
+      </li>
+    </ul>
+  </section>
 
-            document.addEventListener("scroll", scrollHandler);
-            window.addEventListener("load", scrollHandler);
-            if (window.location.protocol != "https:") {
-                window.location.protocol = "https";
-            }
-        </script>
-    </body>
+  <div class="link" aria-hidden="true"></div>
+
+  <section class="card" id="contact" data-side="right" aria-labelledby="h-contact">
+    <div class="card-head"><h2 id="h-contact">Contact</h2></div>
+    <p>Open to senior SaMD engineering roles in ISO 13485 organisations.</p>
+    <div class="email-row">
+      <span class="email" id="email">cl@charlielynch.co.uk</span>
+      <button class="btn" id="copy-email" type="button" aria-label="Copy email address">Copy</button>
+      <span class="sr-only" id="copy-status" role="status"></span>
+    </div>
+    <dl class="stdlist">
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/charlie-lynch/" target="_blank" rel="noopener">linkedin.com/in/charlie-lynch<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+      <div><dt>Website</dt><dd><a href="https://charlielynch.co.uk" target="_blank" rel="noopener">charlielynch.co.uk<span class="sr-only"> (opens in a new tab)</span></a></dd></div>
+      <div><dt>Location</dt><dd>Cambridge, UK</dd></div>
+    </dl>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p>Charles Lynch · Cambridge, UK</p>
+</footer>
+
+<script>
+(() => {
+  const root = document.documentElement;
+  root.classList.add('js');
+  const NS = 'http://www.w3.org/2000/svg';
+  const cards = Array.from(document.querySelectorAll('.card'));
+  const links = Array.from(document.querySelectorAll('.link'));
+  const navLinks = Array.from(document.querySelectorAll('.nav a'));
+  const mq = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+  const reduce = () => !!(mq && mq.matches);
+  root.classList.toggle('reduce', reduce());
+  if (mq && mq.addEventListener) mq.addEventListener('change', () => root.classList.toggle('reduce', reduce()));
+
+  const f = v => v.toFixed(1);
+  const BEAT_SCALE = 0.65; // overall size of each heartbeat
+  const px = name => parseFloat(getComputedStyle(root).getPropertyValue(name)) || 0;
+  const anchorX = (card, w, ax) => (card.dataset.side === 'left' ? ax : w - ax);
+
+  // One PQRST complex, drawn in the direction of travel (s = 1 rightward, -1 leftward).
+  function beat(x, y, s, k) {
+    const X = u => f(x + s * u * k), Y = v => f(y + v * k);
+    return `L${X(0)},${Y(0)} Q${X(11)},${Y(-14)} ${X(22)},${Y(0)} L${X(32)},${Y(0)} ` +
+      `L${X(36)},${Y(5)} L${X(44)},${Y(-50)} L${X(52)},${Y(16)} L${X(57)},${Y(0)} L${X(72)},${Y(0)} ` +
+      `C${X(80)},${Y(-20)} ${X(96)},${Y(-20)} ${X(104)},${Y(0)} L${X(110)},${Y(0)}`;
+  }
+  // From (x1, top) down to a baseline, across with one heartbeat, then down to (x2, bottom).
+  function joinPath(x1, y1, x2, y2, y, w) {
+    const rc = 14;
+    if (Math.abs(x2 - x1) < 2 * rc + 4) return `M${f(x1)},${f(y1)} V${y} H${f(x2)} V${f(y2)}`;
+    const s = x2 > x1 ? 1 : -1;
+    const avail = Math.abs(x2 - x1) - 2 * rc - 36;
+    const k = Math.min((w < 520 ? 0.8 : 1) * BEAT_SCALE, avail / 110);
+    let d = `M${f(x1)},${f(y1)} V${y - rc} Q${f(x1)},${y} ${f(x1 + s * rc)},${y}`;
+    if (k >= 0.45) {
+      const bx = (x1 + x2) / 2 - s * 55 * k;
+      d += ` H${f(bx)} ` + beat(bx, y, s, k);
+    }
+    return d + ` H${f(x2 - s * rc)} Q${f(x2)},${y} ${f(x2)},${y + rc} V${f(y2)}`;
+  }
+
+  const paths = links.map(el => {
+    const svg = document.createElementNS(NS, 'svg');
+    const path = document.createElementNS(NS, 'path');
+    path.setAttribute('pathLength', '1');
+    svg.append(path);
+    el.prepend(svg);
+    return path;
+  });
+
+  // The line starts from a node on the left, under the name and title.
+  const NODE_R = 5;
+  const origin = document.createElementNS(NS, 'circle');
+  origin.setAttribute('class', 'origin');
+  origin.setAttribute('r', String(NODE_R));
+  if (links[0]) links[0].firstChild.append(origin);
+
+  // Intro strip: from the node, a short rhythm strip, then down into the first section.
+  function stripPath(w, h, x2, y) {
+    const rc = 14, sx = NODE_R + 1, k = (w < 520 ? 0.8 : 1) * BEAT_SCALE, bw = 110 * k, rr = 150 * k;
+    origin.setAttribute('cx', f(sx));
+    origin.setAttribute('cy', String(y));
+    const a = sx + NODE_R + 28, b = x2 - rc - 28;
+    const n = Math.max(0, Math.min(3, Math.floor((b - a - bw) / rr) + 1));
+    let d = `M${f(sx + NODE_R)},${y}`;
+    if (n > 0) {
+      const start = a + Math.max(0, (b - a - ((n - 1) * rr + bw)) / 2);
+      for (let i = 0; i < n; i++) { const bx = start + i * rr; d += ` H${f(bx)} ` + beat(bx, y, 1, k); }
+    }
+    return d + ` H${f(x2 - rc)} Q${f(x2)},${y} ${f(x2)},${y + rc} V${f(h)}`;
+  }
+
+  function build() {
+    const ax = px('--ax');
+    links.forEach((el, k) => {
+      const box = el.getBoundingClientRect();
+      const w = box.width, h = box.height;
+      if (!w || !h) return;
+      el.firstChild.setAttribute('viewBox', `0 0 ${f(w)} ${f(h)}`);
+      const to = cards[k];
+      if (!to) return;
+      const x2 = anchorX(to, w, ax);
+      let d;
+      if (el.classList.contains('link-hero')) {
+        d = stripPath(w, h, x2, 76);
+      } else {
+        d = joinPath(anchorX(cards[k - 1], w, ax), 0, x2, h, Math.round(h * 0.62), w);
+      }
+      paths[k].setAttribute('d', d);
+    });
+  }
+
+  // Draw each join once, as it comes into view.
+  function draw(el, duration) {
+    if (el.classList.contains('is-drawn')) return;
+    if (duration) el.style.setProperty('--draw', duration);
+    el.classList.add('is-drawn');
+  }
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { draw(en.target); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.6 });
+    links.slice(1).forEach(el => io.observe(el));
+  } else {
+    links.forEach(el => draw(el));
+  }
+
+  // Highlight the section being read.
+  if ('IntersectionObserver' in window) {
+    const navIO = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(a => {
+          if (a.dataset.nav === en.target.id) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    cards.forEach(c => navIO.observe(c));
+  }
+
+  // Copy email
+  const copyBtn = document.getElementById('copy-email');
+  const emailEl = document.getElementById('email');
+  copyBtn.addEventListener('click', () => {
+    const text = emailEl.textContent.trim();
+    const status = document.getElementById('copy-status');
+    const done = msg => {
+      copyBtn.textContent = msg;
+      if (status) status.textContent = msg === 'Copied' ? 'Email address copied' : 'Email address selected. Press Ctrl+C or Command+C to copy.';
+      setTimeout(() => { copyBtn.textContent = 'Copy'; if (status) status.textContent = ''; }, 1800);
+    };
+    const fallback = () => {
+      const range = document.createRange(); range.selectNodeContents(emailEl);
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(range);
+      done('Selected');
+    };
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => done('Copied'), fallback);
+      else fallback();
+    } catch (e) { fallback(); }
+  });
+
+  // PDF download. On a normal host (e.g. GitHub Pages) the link downloads the file itself.
+  // Inside the Claude viewer plain download links are blocked, so the save prompt is used instead.
+  const pdfLink = document.getElementById('pdf-download');
+  const pdfStatus = document.getElementById('pdf-status');
+  const say = msg => { if (pdfStatus) { pdfStatus.textContent = msg; setTimeout(() => { pdfStatus.textContent = ''; }, 4000); } };
+  if (pdfLink && window.claude && typeof window.claude.use === 'function') {
+    let framed = true;
+    try { framed = window.top !== window.self; } catch (e) { framed = true; }
+    if (framed) pdfLink.hidden = true; // shown again once the save prompt is available
+    window.claude.use('downloads').then(dl => {
+      if (!dl) return;
+      pdfLink.hidden = false;
+      let busy = false;
+      pdfLink.addEventListener('click', async ev => {
+        ev.preventDefault();
+        if (busy) return;
+        busy = true; pdfLink.setAttribute('aria-busy', 'true');
+        try {
+          const res = await fetch(pdfLink.getAttribute('href'));
+          if (!res.ok) throw { code: 'fetch_failed' };
+          await dl.save({ filename: 'Charles-Lynch-CV.pdf', data: await res.blob() });
+        } catch (err) {
+          const code = err && err.code;
+          if (code === 'declined') { /* the viewer chose not to save */ }
+          else if (code === 'rate_limited') say('A download is already waiting for you to confirm.');
+          else if (code === 'fetch_failed' || code === 'too_large' || code === 'bad_request') say('Sorry, the PDF could not be downloaded.');
+          else { pdfLink.hidden = true; say('Downloads are not available here.'); }
+        } finally {
+          busy = false; pdfLink.removeAttribute('aria-busy');
+        }
+      });
+    }, () => {});
+  }
+
+  build();
+  // The intro line draws once on load, out of the full stop.
+  requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(() => draw(links[0], '1.2s'), 100)));
+
+  let pending = false;
+  const rebuild = () => { if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; build(); }); } };
+  window.addEventListener('resize', rebuild);
+  if ('ResizeObserver' in window) {
+    const ro = new ResizeObserver(rebuild);
+    ro.observe(document.querySelector('main'));
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(rebuild);
+})();
+</script>
+</body>
 </html>
